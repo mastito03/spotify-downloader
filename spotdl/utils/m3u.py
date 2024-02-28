@@ -36,8 +36,9 @@ def create_m3u_content(
     - the m3u content as a string
     """
 
-    text = ""
+    text = "#EXTM3U\n"
     for song in song_list:
+        text += f"#EXTINF:{song.duration},{song.name}\n"
         if not detect_formats:
             file_name = create_file_name(
                 song, template, file_extension, restrict, short
